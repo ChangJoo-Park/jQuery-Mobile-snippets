@@ -1,0 +1,170 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>박창주 - Chang Ju Park - jQuery Mobile Snippets</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+				var pageid = $.mobile.activePage.attr("id");
+				pagenum = parseInt(pageid.charAt(4)) + 1;
+				nextpagenum = pageid.substring(0,4)+pagenum;
+				// Swipe Left
+				$('#'+pageid).bind('swipeleft',function(event){
+					$.mobile.changePage('#'+nextpagenum,"slide","reverse")
+					$('#eventlog').append('swipeLeft')+parsingDate(new Date())+'<br/>'.css("color","red")
+				});
+		});
+	</script>
+	<script type="text/javascript">
+	    $(function() {
+	        $("section[data-role*='page']").live('pageshow', function(event, ui) {
+					var pageid = $.mobile.activePage.attr("id");
+					pagenum = parseInt(pageid.charAt(4));
+					var prevpage = pageid.substring(0,4) + (pagenum-1);
+					var nextpage = pageid.substring(0,4) + (pagenum+1);
+					
+					// Swipe Right
+					$('#'+pageid).bind('swiperight',function(event){
+						$.mobile.changePage('#'+prevpage,"slide","reverse")
+					});
+					// Swipe Left
+					$('#'+pageid).bind('swipeleft',function(event){
+						$.mobile.changePage('#'+nextpage,"slide","reverse")
+					});
+				});
+	    });
+	</script>
+
+</head> 
+
+<body> 
+	<section id = "page1" data-role="page">
+		<header data-role="header" class="">
+			<h1>체크박스와 라디오버튼</h1>
+		</header><!-- /header -->
+		<div class = "content" data-role = "content" class="page-view-product">
+			<form id="myform" method="post">
+				<div data-role="filedcontain">
+					<fieldset data-role = "controlgroup">
+						<legend>필터</legend>
+						<input type="checkbox" name="checkbox-french" value="" id="checkbox-french">
+						<label for="checkbox-french">French</label>
+
+						<input type="checkbox" name="checkbox-italian" value="" id="checkbox-italian">
+						<label for="checkbox-italian">Italian</label>
+					</fieldset>
+				</div>
+				<div data-role = "filedcontain">
+					<fieldset data-role="controlgroup" data-type="horizontal">
+						<legend>언어를 선택하세용</legend>
+						<input type="radio" name="radio-language" value="" placeholder="" id="radio-french">
+						<label for="radio-french">French</label>
+						<input type="radio" name="radio-language" value="" placeholder="" id="radio-italian">
+						<label for="radio-italian">Italian</label>
+						<input type="radio" name="radio-language" value="" placeholder="" id="radio-korean">
+						<label for="radio-korean">Korean</label>
+					</fieldset>
+				</div>
+			</form>			
+			<div id='eventlog'></div>
+		</div><!--content-->
+
+		<footer data-role="footer">
+			<h2>HIMM 박창주</h2>
+			<a href="#page2" data-role="button" id="nextPage">다음페이지로</a>
+		</footer><!--footer-->
+	</section>
+
+	<section data-role="page" id="page2">
+		<header id="header" data-role="header">
+			<h1>플립 토글 스위치</h1>
+		</header><!-- /header -->
+		<div data-role="content">
+				<div data-role="fieldcontain">
+					<label for="slider-music">슬라이더 뮤직</label>
+					<select name="slider-music" id="slider-music" data-role="slider">
+						<option value="on">On</option>
+						<option value="off">Off</option>
+					</select>
+				</div>
+		</div><!-- /content -->
+		<footer id="footer" data-role="footer">
+			<h2>HIMM 박창주</h2>
+			<a href="" data-rel="back" data-role="button">이전페이지로</a>
+			<a href="#page3" data-role="button">다음페이지로</a>
+		</footer><!-- /footer -->
+	</section>
+
+	<section data-role="page" id="page3">
+		<header id="header" data-role="header">
+			<h1> 검색 필드</h1>
+		</header><!-- /header -->
+		<div data-role="content">
+				<div data-role="fieldcontain">
+					<label for="search-what">무엇이든 검색하기
+					<input type="search" name="serach-what" id="search-what"/></label><br/>
+					<div>
+					<ul data-role="listview" data-inset="true" data-filter="true" data-theme="a">
+						<li data-theme="c"><a href="#">경복궁</a></li>
+						<li><a href="#">덕소</a></li>
+						<li><a href="#">노원</a></li>
+						<li><a href="#">천호</a></li>
+						<li><a href="#">Mola</a></li>
+					</ul>
+					</div>
+				</div>
+		</div><!-- /content -->
+		<footer id="footer" data-role="footer">
+			<h2>HIMM 박창주</h2>
+			<a href="" data-rel="back" data-role="button">이전페이지로</a>
+			<a href="#page4" data-role="button">다음페이지로</a>
+		</footer><!-- /footer -->
+	</section>
+
+		<section data-role="page" id="page4">
+		<header id="header" data-role="header">
+			<h1> 내장 select 메뉴</h1>
+		</header><!-- /header -->
+		<div data-role="content">
+				<div data-role="fieldcontain">
+					<label for="select-what">무엇이든 선택하기</label>
+					<select id="select-what" name="select-what">
+						<option value="first">1st</option>
+						<option value="second">2nd</option>
+						<option value="third">3rd</option>
+					</select>
+				</div>
+		</div><!-- /content -->
+		<footer id="footer" data-role="footer">
+			<h2>HIMM 박창주</h2>
+			<a href="" data-rel="back" data-role="button">이전페이지로</a>
+			<a href="#page5" data-role="button">다음페이지로</a>
+		</footer><!-- /footer -->
+	</section>
+
+
+		<section data-role="page" id="page5">
+		<header id="header" data-role="header">
+			<h1> 슬라이더 컨트롤  </h1>
+		</header><!-- /header -->
+		<div data-role="content">
+				<form accept-charset="utf-8" id="myform" >
+					<div data-role="fieldcontain">
+						<input type="range" name="silder" min="0" max="100" value="30">						
+					</div>
+				</form>
+		</div><!-- /content -->
+		<footer id="footer" data-role="footer">
+			<h2>HIMM 박창주</h2>
+			<a href="" data-rel="back" data-role="button">이전페이지로</a>
+		</footer><!-- /footer -->
+	</section>
+</body>
+</html>
+
