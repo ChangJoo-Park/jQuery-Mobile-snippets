@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta name=viewport content="user-scalable=no,width=device-width" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+</head> 
+
+<body> 
+
+<div data-role=page id=home>
+  <div data-role=header>
+    <h1>Home</h1>
+  </div>
+
+  <div data-role=content>
+    <span> Get Photo type </span>
+  </div>
+</div>
+
+</body>
+</html>
+
+<script>
+
+var html = "";
+html += "<select data-native-menu=false>";
+html +=   "<option value=1> Camera </option>";
+html +=   "<option value=2> Gallery </option>";
+html += "</select>";
+
+$("#home div:jqmData(role=content)").append (html);
+
+</script>
