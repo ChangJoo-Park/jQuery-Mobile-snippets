@@ -1,0 +1,26 @@
+#toast{
+	position: fixed;
+	top: 80%;
+	left: 50%;
+	width: 200px;
+	background-color: black;
+	color:white;
+	margin-left: -100px;
+	border: 1px solid #666;
+	padding: 10px 0 ;
+	text-align:center;
+	opacity: .9;
+
+	
+	/* opacity time */
+	-webkit-transition: opacity 0.5s ease-out;
+	-moz-transition: opacity 0.5s ease-out;
+	-ms-transition: opacity 0.5s ease-out;
+	-o-transition: opacity 0.5s ease-out;
+	transition: opacity 0.5s ease-out;
+	
+	/* round border */
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;	
+}
